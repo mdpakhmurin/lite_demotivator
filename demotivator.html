@@ -1,0 +1,49 @@
+<form name="inputForm">
+    <input name="url" placeholder="URL Изображения"><br/>
+    <textarea name="text" placeholder="Текст"></textarea><br/>
+    <button onclick='send();'>Отправить</button>
+</form>
+
+<script>
+function createImage(url, text){
+    var img = new Image();
+    img.src = url;
+
+    img.onload = function(){
+        var newImgHeight = img.height*400/img.width;
+
+        text = text.split('\n')
+
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext("2d");
+        canvas.width = 500;
+        canvas.height = 120+newImgHeight+Object.keys(text).length*30;
+        var body = document.getElementsByTagName("body")[0];
+        body.appendChild(canvas);
+
+
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        context.drawImage(img, 50, 50, 400, newImgHeight);
+
+        context.strokeStyle="#FFFFFF";
+        context.lineWidth = 3;
+        context.strokeRect(45, 45, 410, newImgHeight+10);
+
+        context.font = "30px Times New Roman";
+        context.fillStyle = "white";
+        context.textAlign = "center";
+        text.forEach(function(item, i, text) {
+            context.fillText(item, 250, newImgHeight + 100 + 30*i);
+        });
+    };
+}
+
+function send(){
+    var form = document.forms.inputForm;
+    document.forms.inputForm.remove();
+
+    createImage(form.elements.url.value, form.elements.text.value);
+}
+</script>
+  
