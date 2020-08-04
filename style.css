@@ -4,11 +4,19 @@
     margin: 0 auto;
     text-align: center;
 }
+
+img{
+    display: block;
+    padding-top: 10vh;
+    margin: 0 auto;
+    text-align: center;
+}
+
 @media screen and (max-width: 550px) {
     .inp{
         width: 90vw !important;
     }
-    .canvas{
+    img{
         width: 90vw;
     }
 }
@@ -39,9 +47,3 @@
     box-shadow: 0 5px 0 #1e68a0;
 }
 
-canvas{
-    display: block;
-    padding-top: 10vh;
-    margin: 0 auto;
-    text-align: center;
-}

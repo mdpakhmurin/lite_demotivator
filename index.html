@@ -17,6 +17,7 @@
             function createImage(url, text){
                 var img = new Image();
                 img.src = url;
+                img.crossOrigin = 'anonymous';
 
                 img.onload = function(){
                     var newImgHeight = img.height*400/img.width;
@@ -27,9 +28,6 @@
                     var context = canvas.getContext("2d");
                     canvas.width = 500;
                     canvas.height = 120+newImgHeight+Object.keys(text).length*30;
-                    var body = document.getElementsByTagName("body")[0];
-                    body.appendChild(canvas);
-
 
                     context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -45,6 +43,10 @@
                     text.forEach(function(item, i, text) {
                         context.fillText(item, 250, newImgHeight + 100 + 30*i);
                     });
+
+                    var resultimage = new Image();
+	                resultimage.src = canvas.toDataURL("image/png");
+                    document.body.appendChild(resultimage);
                 };
             }
 
