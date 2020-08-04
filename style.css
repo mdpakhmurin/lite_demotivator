@@ -1,0 +1,47 @@
+.inp{
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+@media screen and (max-width: 530px) {
+    .inp{
+        width: 90vw !important;
+    }
+    .canvas{
+        width: 90vw;
+    }
+}
+
+.input-url{
+    margin-top: 20vh;
+    height: 30px;
+}
+
+.input-text{
+    height: 100px;
+}
+
+.input-button{
+    height: 40px;
+    border-radius: 3px;
+    font-size: 20px;
+    font-weight: bold;
+    border: 0;
+    background: #55acee;
+    box-shadow: 0 5px 0 #3C93D5;
+    color: white;
+    transition: .3s;
+    width: 300px;
+}
+.input-button:hover{
+    background: #4595d1;
+    box-shadow: 0 5px 0 #1e68a0;
+}
+
+canvas{
+    display: block;
+    padding-top: 10vh;
+    margin: 0 auto;
+    text-align: center;
+}
