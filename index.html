@@ -8,9 +8,13 @@
         </head>
 
         <form name="inputForm">
-            <input name="url" placeholder="URL Изображения" class="inp input-url"><br/>
+            <input name="url" placeholder="URL Изображения" class="inp input-url">
+            <div>
+                <input type="file" id="input-file" class="input-file" onchange="readFile(this)">
+                <label class="inp input-file-label" for="input-file">Выберите файл</label><br/>
+            </div>
             <textarea name="text" placeholder="Текст" class="inp input-text"></textarea><br/>
-            <button onclick='send();' class="inp input-button">ОТПРАВИТЬ</button>
+            <button onclick='send()' class="inp input-button">ОТПРАВИТЬ</button>
         </form>
 
         <script>
@@ -47,6 +51,16 @@
                     var resultimage = new Image();
 	                resultimage.src = canvas.toDataURL("image/png");
                     document.body.appendChild(resultimage);
+                };
+            }
+
+            function readFile(input) {
+                let file = input.files[0];
+                let reader = new FileReader();
+                reader.readAsDataURL(file);
+
+                reader.onload = function() {
+                    document.forms.inputForm.url.value = reader.result;
                 };
             }
 
